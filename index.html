@@ -10,18 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Professional & Stylish (using a selection of blues, greens, and oranges for a tech-forward feel) -->
-    <!-- Application Structure Plan: A single-page, thematic scrolling application. The structure follows a narrative flow: 1. Hero/Vision (the big idea), 2. Market Opportunity (the "why"), 3. The Solution (the "how"), 4. Go-to-Market Strategy, 5. Team & Foundations (SWOT/Risks), 6. Financials & Valuation (the potential), 7. Competitors (the landscape). This user-friendly structure is more engaging than a linear document, using interactive charts and cards to make dense data digestible. -->
-    <!-- Visualization & Content Choices:
-        - Market Projections: Goal: Change. Viz: Bar Chart (Chart.js). Justification: Clearly shows growth trends and compares Global vs. Technical markets.
-        - CRM Market Share: Goal: Compare/Organize. Viz: Donut Chart (Chart.js). Justification: Excellent for showing the composition of a whole and highlighting key players.
-        - Financial Projections: Goal: Inform. Viz: Styled HTML Table. Justification: Best for presenting precise, multi-metric data clearly.
-        - Valuation Growth: Goal: Change. Viz: Combination Line Chart (Chart.js). Justification: Effectively relates ARR growth to valuation, telling a powerful investor story.
-        - SWOT Analysis: Goal: Organize. Viz: 2x2 Grid of styled HTML cards. Justification: Classic, intuitive layout for SWOT.
-        - Competitor Table: Goal: Compare/Organize. Viz: Styled, responsive HTML Table/Cards. Justification: Direct comparison of multiple competitors across key metrics.
-        - Process Flow: Goal: Organize. Viz: HTML/CSS styled diagram. Justification: Visually represents the core intelligent cycle without using prohibited SVG/Mermaid.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -40,7 +28,7 @@
             padding: 1.5rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             text-align: center;
-            border-left: 4px solid #F97316;
+            border-left: 4px solid #3B82F6; /* Changé de #F97316 à bleu */
         }
         .section-title {
             font-size: 2.25rem;
@@ -48,22 +36,21 @@
             color: #111827;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 3px solid #F97316;
+            border-bottom: 3px solid #3B82F6; /* Changé de #F97316 à bleu */
             display: inline-block;
         }
         .nav-link {
             transition: color 0.3s ease, border-color 0.3s ease;
         }
         .nav-link:hover, .nav-link.active {
-            color: #F97316;
-            border-bottom-color: #F97316;
+            color: #3B82F6; /* Changé de #F97316 à bleu */
+            border-bottom-color: #3B82F6; /* Changé de #F97316 à bleu */
         }
     </style>
 </head>
 
 <body class="antialiased">
 
-    <!-- Header & Navigation -->
     <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-4 lg:px-6 py-4">
             <div class="flex justify-between items-center">
@@ -82,8 +69,7 @@
                     </button>
                 </div>
             </div>
-             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
+             <div id="mobile-menu" class="hidden md:hidden mt-4">
                 <a href="#vision" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">La Vision</a>
                 <a href="#marche" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">Marché</a>
                 <a href="#solution" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">Solution</a>
@@ -96,11 +82,10 @@
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
 
-        <!-- Section: Vision -->
         <section id="vision" class="pt-16 -mt-16">
             <div class="text-center mb-12">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-500">Scalia AI :</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">Scalia AI :</span>
                     Révolutionner la Gestion des Talents par l'IA
                 </h1>
                 <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
@@ -144,7 +129,6 @@
             </div>
         </section>
 
-        <!-- Section: Marché -->
         <section id="marche" class="pt-24 -mt-16">
             <h2 class="section-title text-center mb-12">Une Opportunité de Marché en Pleine Expansion</h2>
             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
@@ -167,7 +151,6 @@
             </div>
         </section>
 
-        <!-- Section: Solution -->
         <section id="solution" class="pt-24 -mt-16">
             <h2 class="section-title text-center mb-12">Notre Solution : L'Intelligence des Compétences</h2>
              <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
@@ -198,15 +181,14 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Section: Stratégie -->
+
         <section id="strategie" class="pt-24 -mt-16">
             <h2 class="section-title text-center mb-12">Stratégie de Commercialisation</h2>
             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
                Notre croissance sera alimentée par une double approche : une force de vente directe ciblée et un puissant réseau de partenaires stratégiques pour une acquisition client rapide et rentable.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-orange-500">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-blue-500">
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Vente Directe</h3>
                     <ul class="space-y-3 text-gray-600 list-disc list-inside">
                         <li>Équipe de vente interne axée sur les PME et les grandes entreprises.</li>
@@ -228,7 +210,6 @@
         </section>
 
 
-        <!-- Section: Finances -->
         <section id="finances" class="pt-24 -mt-16">
             <h2 class="section-title text-center mb-12">Projections Financières et Valorisation</h2>
              <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
@@ -296,8 +277,7 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Section: Concurrents -->
+
         <section id="concurrents" class="pt-24 -mt-16">
             <h2 class="section-title text-center mb-12">Analyse des Concurrents</h2>
              <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
@@ -381,7 +361,7 @@
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-            
+
             const processLabel = (label) => {
                 if (label.length <= 16) return label;
                 const words = label.split(' ');
@@ -476,8 +456,8 @@
                     }, {
                         label: 'Valorisation Estimée (Millions USD)',
                         data: [30, 100, 225],
-                        borderColor: '#ea580c',
-                        backgroundColor: 'rgba(234, 88, 12, 0.1)',
+                        borderColor: '#3B82F6', // Changé de '#ea580c' à bleu
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)', // Ajusté le fond pour correspondre au nouveau bleu
                         fill: true,
                         yAxisID: 'y1'
                     }]
@@ -529,3 +509,4 @@
 
 </body>
 </html>
+```
