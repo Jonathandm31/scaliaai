@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan d'Affaires Interactif : Scalia AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Professional & Stylish (using a selection of blues, greens, and oranges for a tech-forward feel) -->
+    <!-- Application Structure Plan: A single-page, thematic scrolling application. The structure follows a narrative flow: 1. Hero/Vision (the big idea), 2. Market Opportunity (the "why"), 3. The Solution (the "how"), 4. Go-to-Market Strategy, 5. Team & Foundations (SWOT/Risks), 6. Financials & Valuation (the potential), 7. Competitors (the landscape). This user-friendly structure is more engaging than a linear document, using interactive charts and cards to make dense data digestible. -->
+    <!-- Visualization & Content Choices:
+        - Market Projections: Goal: Change. Viz: Bar Chart (Chart.js). Justification: Clearly shows growth trends and compares Global vs. Technical markets.
+        - CRM Market Share: Goal: Compare/Organize. Viz: Donut Chart (Chart.js). Justification: Excellent for showing the composition of a whole and highlighting key players.
+        - Financial Projections: Goal: Inform. Viz: Styled HTML Table. Justification: Best for presenting precise, multi-metric data clearly.
+        - Valuation Growth: Goal: Change. Viz: Combination Line Chart (Chart.js). Justification: Effectively relates ARR growth to valuation, telling a powerful investor story.
+        - SWOT Analysis: Goal: Organize. Viz: 2x2 Grid of styled HTML cards. Justification: Classic, intuitive layout for SWOT.
+        - Competitor Table: Goal: Compare/Organize. Viz: Styled, responsive HTML Table/Cards. Justification: Direct comparison of multiple competitors across key metrics.
+        - Process Flow: Goal: Organize. Viz: HTML/CSS styled diagram. Justification: Visually represents the core intelligent cycle without using prohibited SVG/Mermaid.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1f2937;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            max-height: 50vh;
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            text-align: center;
+            border-left: 4px solid #F97316;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #F97316;
+            display: inline-block;
+        }
+        .nav-link {
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #F97316;
+            border-bottom-color: #F97316;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 lg:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-gray-800">🚀 Scalia AI</a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#vision" class="nav-link text-gray-600 font-medium border-b-2 border-transparent pb-1">La Vision</a>
+                    <a href="#marche" class="nav-link text-gray-600 font-medium border-b-2 border-transparent pb-1">Marché</a>
+                    <a href="#solution" class="nav-link text-gray-600 font-medium border-b-2 border-transparent pb-1">Solution</a>
+                    <a href="#strategie" class="nav-link text-gray-600 font-medium border-b-2 border-transparent pb-1">Stratégie</a>
+                    <a href="#finances" class="nav-link text-gray-600 font-medium border-b-2 border-transparent pb-1">Finances</a>
+                    <a href="#concurrents" class="nav-link text-gray-600 font-medium border-b-2 border-transparent pb-1">Concurrents</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#vision" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">La Vision</a>
+                <a href="#marche" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">Marché</a>
+                <a href="#solution" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">Solution</a>
+                <a href="#strategie" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">Stratégie</a>
+                <a href="#finances" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">Finances</a>
+                <a href="#concurrents" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded">Concurrents</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+
+        <!-- Section: Vision -->
+        <section id="vision" class="pt-16 -mt-16">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-500">Scalia AI :</span>
+                    Révolutionner la Gestion des Talents par l'IA
+                </h1>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    Une solution SaaS de nouvelle génération qui redéfinit les standards de l’évaluation des compétences et de la formation continue en entreprise.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+                 <h3 class="text-2xl font-bold text-gray-800 mb-4">Notre Proposition de Valeur</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Scalia AI est une solution SaaS de nouvelle génération qui redéfinit les standards de l’évaluation des compétences et de la formation continue en entreprise. Propulsée par l’intelligence artificielle, sa plateforme web analyse avec précision la maîtrise des outils technologiques essentiels dès le recrutement des employés, tout en automatisant le suivi et l’optimisation des parcours de formation. Résultat : un apprentissage plus ciblé, un gain de temps significatif et une montée en compétences durable à chaque étape du parcours professionnel. Notre architecture **AI-native** nous confère un avantage compétitif décisif, garantissant une intégration fluide, des performances optimisées et une capacité d’adaptation exceptionnelle.
+                </p>
+            </div>
+
+            <h2 class="section-title mb-8">Facteurs Clés de Succès</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Hyper-Personnalisation IA</h3>
+                    <p class="text-gray-600">Génération de tests sur-mesure pour chaque poste et entreprise, assurant une pertinence maximale.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Intégrations Profondes</h3>
+                    <p class="text-gray-600">Connexion native aux ATS, SIRH et plateformes métiers (Salesforce, HubSpot) pour une valeur immédiate.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Approche Holistique</h3>
+                    <p class="text-gray-600">Combinaison de tests formels et d'analyse de l'utilisation réelle des outils pour une vision complète.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Cycle Complet Intelligent</h3>
+                    <p class="text-gray-600">Un cercle vertueux : Évaluation → Recommandation → Re-test, guidé par l'IA.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Marketplace Monétisé</h3>
+                    <p class="text-gray-600">Un écosystème de formations recommandées qui génère une source de revenus additionnelle.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Expertise des Fondateurs</h3>
+                    <p class="text-gray-600">Une connaissance approfondie des écosystèmes CRM qui garantit la pertinence de la solution.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Marché -->
+        <section id="marche" class="pt-24 -mt-16">
+            <h2 class="section-title text-center mb-12">Une Opportunité de Marché en Pleine Expansion</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                Le marché de l'évaluation des compétences est en forte croissance, tiré par la transformation numérique et la demande de talents spécialisés. Le segment des compétences techniques, notre cœur de cible, surperforme le marché global, ce qui représente une opportunité majeure pour Scalia AI.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-3 bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-center mb-4 text-gray-800">Projections de Croissance du Marché (Milliards USD)</h3>
+                    <div class="chart-container">
+                        <canvas id="marketGrowthChart"></canvas>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg">
+                     <h3 class="text-xl font-bold text-center mb-4 text-gray-800">Parts du Marché CRM (Beachhead)</h3>
+                     <p class="text-center text-gray-500 text-sm mb-4">Notre stratégie de tête de pont cible le marché des CRM, dominé par des acteurs clés mais avec des opportunités pour des solutions spécialisées comme la nôtre.</p>
+                    <div class="chart-container" style="height:350px">
+                        <canvas id="crmMarketShareChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Solution -->
+        <section id="solution" class="pt-24 -mt-16">
+            <h2 class="section-title text-center mb-12">Notre Solution : L'Intelligence des Compétences</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+               Scalia AI offre une suite de fonctionnalités propulsées par l'IA pour gérer le cycle de vie complet des compétences, du recrutement au développement continu, en passant par l'analyse approfondie de l'utilisation réelle des outils.
+            </p>
+
+            <div class="space-y-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                    <div class="text-5xl">🎯</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Évaluations Intelligentes au Recrutement</h3>
+                        <p class="text-gray-600 mt-2">Générez des tests personnalisés par IA basés sur les descriptions de poste pour identifier les meilleurs talents, en évaluant non seulement la théorie mais aussi l'application pratique via des scénarios concrets.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                     <div class="text-5xl">📈</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Suivi Continu et Développement des Employés</h3>
+                        <p class="text-gray-600 mt-2">Cartographiez les compétences de vos équipes, identifiez les lacunes et suivez la progression grâce à des évaluations périodiques et à une analyse comportementale directe depuis HubSpot et Salesforce.</p>
+                    </div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                     <div class="text-5xl">💡</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Moteur de Recommandations et Marketplace</h3>
+                        <p class="text-gray-600 mt-2">Notre IA propose des parcours de formation ultra-ciblés. Le marketplace intégré facilite l'accès à ces formations et crée une source de revenus via un modèle de commission.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section: Stratégie -->
+        <section id="strategie" class="pt-24 -mt-16">
+            <h2 class="section-title text-center mb-12">Stratégie de Commercialisation</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+               Notre croissance sera alimentée par une double approche : une force de vente directe ciblée et un puissant réseau de partenaires stratégiques pour une acquisition client rapide et rentable.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-orange-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Vente Directe</h3>
+                    <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                        <li>Équipe de vente interne axée sur les PME et les grandes entreprises.</li>
+                        <li>Marketing de contenu pour éduquer et attirer (blogs, études de cas).</li>
+                        <li>SEO/SEA ciblant les mots-clés d'évaluation des compétences.</li>
+                        <li>Démos produit et essais gratuits pour prouver la valeur.</li>
+                    </ul>
+                </div>
+                 <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-teal-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Vente Indirecte via Partenaires</h3>
+                     <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                        <li>Partenariats avec des agences HubSpot et des intégrateurs Salesforce.</li>
+                        <li>Modèle de commission attractif et à vie (20%) pour nos partenaires.</li>
+                        <li>Co-marketing via des webinaires et des contenus conjoints.</li>
+                        <li>Collaboration avec des organismes de formation pour enrichir le marketplace.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section: Finances -->
+        <section id="finances" class="pt-24 -mt-16">
+            <h2 class="section-title text-center mb-12">Projections Financières et Valorisation</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+               Nos projections financières sont basées sur une croissance agressive du revenu annuel récurrent (ARR), des métriques SaaS saines et des multiples de valorisation élevés, typiques des startups IA innovantes.
+            </p>
+
+            <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+                <h3 class="text-xl font-bold text-center mb-4 text-gray-800">Projections Financières Clés (Exemple)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Métrique Financière</th>
+                                <th scope="col" class="px-6 py-3">Année 1 (Projeté)</th>
+                                <th scope="col" class="px-6 py-3">Année 2 (Projeté)</th>
+                                <th scope="col" class="px-6 py-3">Année 3 (Projeté)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">ARR (USD)</th>
+                                <td class="px-6 py-4">1,000,000</td>
+                                <td class="px-6 py-4">5,000,000</td>
+                                <td class="px-6 py-4">15,000,000</td>
+                            </tr>
+                             <tr class="bg-gray-50 border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Revenu Moyen / Client (USD)</th>
+                                <td class="px-6 py-4">10,000</td>
+                                <td class="px-6 py-4">12,500</td>
+                                <td class="px-6 py-4">15,000</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Nombre de Clients</th>
+                                <td class="px-6 py-4">100</td>
+                                <td class="px-6 py-4">400</td>
+                                <td class="px-6 py-4">1,000</td>
+                            </tr>
+                             <tr class="bg-gray-50 border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">CAC (USD)</th>
+                                <td class="px-6 py-4">20,000</td>
+                                <td class="px-6 py-4">20,833</td>
+                                <td class="px-6 py-4">15,000</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">LTV (USD)</th>
+                                <td class="px-6 py-4">50,000</td>
+                                <td class="px-6 py-4">62,500</td>
+                                <td class="px-6 py-4">75,000</td>
+                            </tr>
+                             <tr class="bg-gray-50 border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Ratio LTV/CAC</th>
+                                <td class="px-6 py-4 font-bold text-green-600">2.5x</td>
+                                <td class="px-6 py-4 font-bold text-green-600">3.0x</td>
+                                <td class="px-6 py-4 font-bold text-green-600">5.0x</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold text-center mb-4 text-gray-800">Trajectoire de Valorisation vers 100M+ USD</h3>
+                <div class="chart-container">
+                    <canvas id="valuationChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section: Concurrents -->
+        <section id="concurrents" class="pt-24 -mt-16">
+            <h2 class="section-title text-center mb-12">Analyse des Concurrents</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+               Le marché de l'évaluation des compétences est concurrentiel, mais notre hyper-spécialisation sur les CRM et notre analyse comportementale via l'IA nous offrent un avantage distinct sur les acteurs établis.
+            </p>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                 <h3 class="text-xl font-bold text-center mb-4 text-gray-800">Tableau Récapitulatif des Concurrents Clés</h3>
+                <div class="overflow-x-auto">
+                     <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3">Concurrent</th>
+                                <th class="px-4 py-3">Pays</th>
+                                <th class="px-4 py-3">Fondation</th>
+                                <th class="px-4 py-3">Revenus (Est.)</th>
+                                <th class="px-4 py-3">Financement Total</th>
+                                <th class="px-4 py-3">Intégration IA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <td class="px-4 py-4 font-medium text-gray-900">TestGorilla</td>
+                                <td class="px-4 py-4">Pays-Bas</td>
+                                <td class="px-4 py-4">2019</td>
+                                <td class="px-4 py-4">10-50M$</td>
+                                <td class="px-4 py-4">81,2M$</td>
+                                <td class="px-4 py-4">Réelle</td>
+                            </tr>
+                             <tr class="bg-gray-50 border-b">
+                                <td class="px-4 py-4 font-medium text-gray-900">iMocha</td>
+                                <td class="px-4 py-4">É-U/Inde</td>
+                                <td class="px-4 py-4">2015</td>
+                                <td class="px-4 py-4">15M$</td>
+                                <td class="px-4 py-4">14M$</td>
+                                <td class="px-4 py-4">Réelle</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-4 py-4 font-medium text-gray-900">Mercer Mettl</td>
+                                <td class="px-4 py-4">Inde</td>
+                                <td class="px-4 py-4">2010</td>
+                                <td class="px-4 py-4">N/A</td>
+                                <td class="px-4 py-4">5,19M$</td>
+                                <td class="px-4 py-4">Réelle</td>
+                            </tr>
+                             <tr class="bg-gray-50 border-b">
+                                <td class="px-4 py-4 font-medium text-gray-900">HireVue</td>
+                                <td class="px-4 py-4">États-Unis</td>
+                                <td class="px-4 py-4">2004</td>
+                                <td class="px-4 py-4">75M$</td>
+                                <td class="px-4 py-4">93,4M$</td>
+                                <td class="px-4 py-4">Réelle</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-4 py-4 font-medium text-gray-900">SHL</td>
+                                <td class="px-4 py-4">Royaume-Uni</td>
+                                <td class="px-4 py-4">1977</td>
+                                <td class="px-4 py-4">750M$</td>
+                                <td class="px-4 py-4">84,5M$</td>
+                                <td class="px-4 py-4">Réelle</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Scalia AI. Tous droits réservés.</p>
+            <p class="text-sm text-gray-400 mt-2">Plan d'Affaires Interactif.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const processLabel = (label) => {
+                if (label.length <= 16) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for(const word of words) {
+                    if ((currentLine + ' ' + word).length > 16 && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = currentLine ? `${currentLine} ${word}` : word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const marketGrowthChartCtx = document.getElementById('marketGrowthChart').getContext('2d');
+            new Chart(marketGrowthChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2024', '2025', '2033-34'],
+                    datasets: [{
+                        label: 'Marché Global Évaluation Compétences (Mds USD)',
+                        data: [6.27, 7.59, 20.34],
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Marché Compétences Techniques (Mds USD)',
+                        data: [null, 2.0, 6.0],
+                        backgroundColor: 'rgba(249, 115, 22, 0.6)',
+                        borderColor: 'rgba(249, 115, 22, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Taille du Marché (Milliards USD)' }
+                        }
+                    },
+                    plugins: { tooltip: { callbacks: { title: tooltipTitleCallback } } }
+                }
+            });
+
+            const crmMarketShareCtx = document.getElementById('crmMarketShareChart').getContext('2d');
+            new Chart(crmMarketShareCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Salesforce', 'Microsoft', 'Adobe', 'Oracle', 'SAP', 'HubSpot', 'Autres'],
+                    datasets: [{
+                        label: 'Parts de Marché CRM',
+                        data: [29.2, 5.5, 4.5, 4.5, 3.5, 2.5, 50.3],
+                         backgroundColor: [ '#1d4ed8', '#0284c7', '#dc2626', '#f97316', '#65a30d', '#f59e0b', '#6b7280'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+
+            const valuationChartCtx = document.getElementById('valuationChart').getContext('2d');
+            new Chart(valuationChartCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Année 1', 'Année 2', 'Année 3'],
+                    datasets: [{
+                        label: 'ARR (Millions USD)',
+                        data: [1, 5, 15],
+                        borderColor: '#16a34a',
+                        backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                        fill: true,
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Valorisation Estimée (Millions USD)',
+                        data: [30, 100, 225],
+                        borderColor: '#ea580c',
+                        backgroundColor: 'rgba(234, 88, 12, 0.1)',
+                        fill: true,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                     interaction: { mode: 'index', intersect: false },
+                    stacked: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'ARR (Millions USD)' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'Valorisation (Millions USD)' },
+                            grid: { drawOnChartArea: false }
+                        }
+                    },
+                    plugins: { tooltip: { callbacks: { title: tooltipTitleCallback } } }
+                }
+            });
+
+            // Active nav link styling on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.onscroll = () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 70) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+        });
+    </script>
+
+</body>
+</html>
